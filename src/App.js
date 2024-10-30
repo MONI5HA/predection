@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Pie, Bar } from "react-chartjs-2";
+import Main from "./temp.jpeg";
+import Food from "./food.jpeg";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+} from "chart.js";
+import "./App.css";
+import HealthForm from "./HealthForm";
+import Dashboard from "./Dashboard";
+import Mainpage from "./Mainpage";
+
+// Register necessary chart components
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title
+);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Mainpage />} />
+        <Route path="/dasboard" element={<Dashboard />} />
+        <Route path="/form" element={<HealthForm />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
